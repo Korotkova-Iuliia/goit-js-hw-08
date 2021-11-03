@@ -17,7 +17,7 @@ form.addEventListener('submit', e => {
   e.preventDefault();
 
   const formData = new FormData(form);
-  formData.forEach((email, message) => console.log(email, message));
+  // formData.forEach((email, message) => console.log(email, message));
   console.log(JSON.parse(localStorage.getItem('inputData')));
   form.reset();
   localStorage.removeItem('inputData');
