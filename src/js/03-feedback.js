@@ -1,37 +1,37 @@
-// const throttle = require('lodash.throttle');
-// const form = document.querySelector('.feedback-form');
+const throttle = require('lodash.throttle');
+const form = document.querySelector('.feedback-form');
 
-// let inputData = {};
+let inputData = {};
 
-// initForm();
+initForm();
 
-// form.addEventListener(
-//   'input',
-//   throttle(e => {
-//     inputData[e.target.name] = e.target.value;
-//     localStorage.setItem('inputData', JSON.stringify(inputData));
-//   }, 500),
-// );
+form.addEventListener(
+  'input',
+  throttle(e => {
+    inputData[e.target.name] = e.target.value;
+    localStorage.setItem('inputData', JSON.stringify(inputData));
+  }, 500),
+);
 
-// form.addEventListener('submit', e => {
-//   e.preventDefault();
+form.addEventListener('submit', e => {
+  e.preventDefault();
 
-//   const formData = new FormData(form);
-//   // formData.forEach((email, message) => console.log(email, message));
-//   console.log(JSON.parse(localStorage.getItem('inputData')));
-//   form.reset();
-//   localStorage.removeItem('inputData');
-// });
+  const formData = new FormData(form);
+  // formData.forEach((email, message) => console.log(email, message));
+  console.log(JSON.parse(localStorage.getItem('inputData')));
+  form.reset();
+  localStorage.removeItem('inputData');
+});
 
-// function initForm() {
-//   let inputForm = localStorage.getItem('inputData');
+function initForm() {
+  let inputForm = localStorage.getItem('inputData');
 
-//   if (inputForm) {
-//     inputForm = JSON.parse(inputForm);
+  if (inputForm) {
+    inputForm = JSON.parse(inputForm);
 
-//     Object.entries(inputForm).forEach(([name, value]) => {
-//       inputData[name] = value;
-//       form.elements[name].value = value;
-//     });
-//   }
-// }
+    Object.entries(inputForm).forEach(([name, value]) => {
+      inputData[name] = value;
+      form.elements[name].value = value;
+    });
+  }
+}
