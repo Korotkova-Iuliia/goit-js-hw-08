@@ -2,10 +2,10 @@ import Player from '@vimeo/player';
 const throttle = require('lodash.throttle');
 const iframe = document.querySelector('#vimeo-player');
 const player = new Player(iframe);
-console.log(player);
+// console.log(player);
 
 let currentTimeStopPlayer = localStorage.getItem('videoplayer-current-time');
-console.log(currentTimeStopPlayer);
+// console.log(currentTimeStopPlayer);
 
 const currentTimePlayer = player.on(
   'timeupdate',
@@ -16,18 +16,46 @@ const currentTimePlayer = player.on(
 );
 
 player
-  .setCurrentTime(currentTimeStopPlayer)
+  .setCurrentTime()
   .then(function (seconds) {
-    currentTimePlayer;
+    if (currentTimePlayer) {
+      return currentTimeStopPlayer;
+    }
   })
   .catch(function (error) {
-    switch (error.name) {
-      case 'RangeError':
-        // the time was less than 0 or greater than the video’s duration
-        break;
-
-      default:
-        // some other error occurred
-        break;
-    }
+    console.log('для воспроизведения нажмите play');
+    // console.log(error);
   });
+// import Player from '@vimeo/player';
+// const throttle = require('lodash.throttle');
+// const iframe = document.querySelector('#vimeo-player');
+// const player = new Player(iframe);
+// console.log(player);
+
+// let currentTimeStopPlayer = localStorage.getItem('videoplayer-current-time');
+// console.log(currentTimeStopPlayer);
+
+// const currentTimePlayer = player.on(
+//   'timeupdate',
+//   throttle(function (data) {
+//     localStorage.setItem('videoplayer-current-time', data.seconds);
+//     console.log(data.seconds);
+//   }, 1000),
+// );
+
+// player
+//   .setCurrentTime(currentTimeStopPlayer)
+//   .then(function (seconds) {
+//     currentTimePlayer;
+//   })
+//   .catch(function (error) {
+//     switch (error.name) {
+//       case 'RangeError':
+//         // the time was less than 0 or greater than the video’s duration
+//         break;
+
+//       default:
+//         // some other error occurred
+//         break;
+//     }
+//   });
