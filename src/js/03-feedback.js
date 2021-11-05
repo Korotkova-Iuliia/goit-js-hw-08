@@ -21,6 +21,7 @@ form.addEventListener('submit', e => {
   console.log(JSON.parse(localStorage.getItem('inputData')));
   form.reset();
   localStorage.removeItem('inputData');
+  inputData = {};
 });
 
 function initForm() {
