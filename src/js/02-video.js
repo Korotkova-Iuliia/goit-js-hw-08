@@ -5,7 +5,7 @@ const player = new Player(iframe);
 // console.log(player);
 
 let currentTimeStopPlayer = localStorage.getItem('videoplayer-current-time');
-// console.log(currentTimeStopPlayer);
+console.log(currentTimeStopPlayer);
 
 const currentTimePlayer = player.on(
   'timeupdate',
@@ -15,17 +15,28 @@ const currentTimePlayer = player.on(
   }, 1000),
 );
 
-player
-  .setCurrentTime(currentTimeStopPlayer)
-  .then(function (seconds) {
-    if (currentTimePlayer) {
-      return seconds;
-    }
-    return console.log('для воспроизведения нажмите play');
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+player.setCurrentTime(currentTimeStopPlayer).then(function (seconds) {
+  if (currentTimePlayer) {
+    seconds;
+  }
+});
+
+// не сохраняет время при перезагрузке страницы
+// if (currentTimePlayer) {
+//   player.setCurrentTime(currentTimeStopPlayer);
+// }
+
+// player
+//   .setCurrentTime(currentTimeStopPlayer)
+//   .then(function (seconds) {
+//     if (currentTimePlayer) {
+//       return seconds;
+//     }
+//     return console.log('для воспроизведения нажмите play');
+//   })
+//   .catch(function (error) {
+//     console.log(error);
+//   });
 
 // old code \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 // player
