@@ -6,6 +6,7 @@ import { galleryItems } from './gallery-items';
 console.log(galleryItems);
 
 const imageContainer = document.querySelector('.gallery');
+
 const imagesMarkup = galleryItems
   .map(({ preview, original, description }) => {
     return `<li><a class="gallery__item" href="${original}">
@@ -15,9 +16,10 @@ const imagesMarkup = galleryItems
   .join('');
 imageContainer.insertAdjacentHTML('beforeend', imagesMarkup);
 console.log(imageContainer);
+
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
-  captionDelay: 250,
+  captionDelay: 1250,
   enableKeyboard: true,
   animationSlide: true,
   animationSpeed: 250,
