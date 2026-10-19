@@ -20,38 +20,3 @@ player.setCurrentTime(currentTimeStopPlayer).then(function (seconds) {
     seconds;
   }
 });
-
-// не сохраняет время при перезагрузке страницы
-// if (currentTimePlayer) {
-//   player.setCurrentTime(currentTimeStopPlayer);
-// }
-
-// player
-//   .setCurrentTime(currentTimeStopPlayer)
-//   .then(function (seconds) {
-//     if (currentTimePlayer) {
-//       return seconds;
-//     }
-//     return console.log('для воспроизведения нажмите play');
-//   })
-//   .catch(function (error) {
-//     console.log(error);
-//   });
-
-// old code \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-// player
-//   .setCurrentTime(currentTimeStopPlayer)
-//   .then(function (seconds) {
-//     currentTimePlayer;
-//   })
-//   .catch(function (error) {
-//     switch (error.name) {
-//       case 'RangeError':
-//         // the time was less than 0 or greater than the video’s duration
-//         break;
-
-//       default:
-//         // some other error occurred
-//         break;
-//     }
-//   });
