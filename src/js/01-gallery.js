@@ -15,7 +15,6 @@ const imagesMarkup = galleryItems
   })
   .join('');
 imageContainer.insertAdjacentHTML('beforeend', imagesMarkup);
-// lightbox.refresh();
 console.log(imageContainer);
 
 const lightbox = new SimpleLightbox('.gallery a', {
@@ -24,42 +23,31 @@ const lightbox = new SimpleLightbox('.gallery a', {
   enableKeyboard: true,
   animationSlide: true,
   animationSpeed: 250,
+  loop: true,
+  doubleTapZoom: 2,
 });
-let target = document.querySelector('.item');
-console.log(target);
 
-let options = {
-  root: null,
-  rootMargin: '0px',
-  threshold: 1.0,
-};
-let observer = new IntersectionObserver(callback, options);
-function callback(entries, observer) {
-  entries.forEach(entry => {
-    //   entry.rootBounds;         // a DOMRectReadOnly for the intersection observer's root.
-    // entry.boundingClientRect; // a DOMRectReadOnly for the intersection observer's target.
-    // entry.intersectionRect;   // a DOMRectReadOnly for the visible portion of the intersection observer's target.
-    // entry.intersectionRatio;  // the number for the ratio of the intersectionRect to the boundingClientRect.
-    entry.target; // the Element whose intersection with the intersection root changed.
-    console.log(entry.target);
-    entry.isIntersecting; // intersecting: true or false
-  });
-  observer.observe(target);
-}
+// ----- Lazy load new IntersectionObserver(callback, options);-----//
+// const targets = document.querySelectorAll('.item');
+// console.log(targets);
 
-// \\\\\\\\\\\\
-// function onEntry(entries, observer) {
+// let options = {
+//   root: null,
+//   rootMargin: '50px',
+//   threshold: 0.7, // see element 70%
+// };
+
+// function callback(entries, observer) {
 //   entries.forEach(entry => {
 //     if (entry.isIntersecting) {
-//       page += 1;
-//       getAxiosTag(surchtags, page).then(photos => {
-//         renderPhotos(photos.hits);
-//       });
+//       console.log(entry.target);
+//       observer.unobserve(entry.target);
 //     }
 //   });
 // }
-// const observer = new IntersectionObserver(onEntry, {
-//   root: null,
-//   rootMargin: '0px',
-//   threshold: 0.5,
+
+// const observer = new IntersectionObserver(callback, options);
+
+// targets.forEach(target => {
+//   observer.observe(target);
 // });
